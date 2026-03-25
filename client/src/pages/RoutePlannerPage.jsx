@@ -75,7 +75,7 @@ export default function RoutePlannerPage() {
       if (!dstGeo) return toast.error(`Could not find: ${destination}`);
 
       // Get route analysis
-      const { data } = await axios.post('/api/route-analysis', {
+      const { data } = await axios.post('/route-analysis', {
         source: { lat: srcGeo.lat, lng: srcGeo.lng },
         destination: { lat: dstGeo.lat, lng: dstGeo.lng },
       });

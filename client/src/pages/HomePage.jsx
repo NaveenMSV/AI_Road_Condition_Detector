@@ -78,7 +78,7 @@ export default function HomePage() {
 
   const fetchIssues = useCallback(async () => {
     try {
-      const { data } = await axios.get('/api/issues');
+      const { data } = await axios.get('/issues');
       setIssues(data.issues || []);
       
       // Center map on first issue if available

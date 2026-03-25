@@ -38,7 +38,7 @@ export default function DashboardPage() {
 
   const fetchStats = async () => {
     try {
-      const { data } = await axios.get('/api/stats');
+      const { data } = await axios.get('/stats');
       setStats(data);
     } catch (err) {
       console.warn('Stats fetch error:', err.message);
