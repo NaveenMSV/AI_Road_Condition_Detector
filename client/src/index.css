@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================
+   AI Road Condition Detector - Global Styles
+   ======================================== */
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  body {
+    @apply font-sans bg-surface-50 text-gray-900 dark:bg-surface-900 dark:text-gray-100 transition-colors duration-300;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+  }
+}
+
+@layer components {
+  /* Glassmorphism Card */
+  .glass-card {
+    @apply bg-white/70 dark:bg-white/5 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl shadow-lg;
+  }
+
+  .glass-card-hover {
+    @apply glass-card hover:bg-white/90 dark:hover:bg-white/10 hover:shadow-xl hover:scale-[1.02] transition-all duration-300;
+  }
+
+  /* Gradient Backgrounds */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary-500 via-primary-600 to-accent-500;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary-50 via-white to-accent-50 dark:from-surface-900 dark:via-surface-800 dark:to-primary-950;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-500 to-accent-500 bg-clip-text text-transparent;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-semibold text-white gradient-primary 
+    hover:shadow-lg hover:shadow-primary-500/25 hover:scale-105 
+    active:scale-95 transition-all duration-200 
+    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-xl font-semibold text-primary-600 dark:text-primary-400 
+    bg-primary-50 dark:bg-primary-500/10 border border-primary-200 dark:border-primary-500/30
+    hover:bg-primary-100 dark:hover:bg-primary-500/20 hover:scale-105 
+    active:scale-95 transition-all duration-200;
+  }
+
+  .btn-danger {
+    @apply px-6 py-3 rounded-xl font-semibold text-white bg-red-500 
+    hover:bg-red-600 hover:shadow-lg hover:shadow-red-500/25 
+    active:scale-95 transition-all duration-200;
+  }
+
+  /* Input Fields */
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 
+    bg-white/50 dark:bg-white/5 backdrop-blur-sm
+    focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 
+    outline-none transition-all duration-200
+    placeholder:text-gray-400 dark:placeholder:text-gray-500;
+  }
+
+  /* Badge / Chips */
+  .badge {
+    @apply inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .badge-pothole {
+    @apply badge bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400;
+  }
+
+  .badge-bump {
+    @apply badge bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-400;
+  }
+
+  .badge-crack {
+    @apply badge bg-orange-100 text-orange-700 dark:bg-orange-500/20 dark:text-orange-400;
+  }
+
+  .badge-severity-low {
+    @apply badge bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400;
+  }
+
+  .badge-severity-medium {
+    @apply badge bg-yellow-100 text-yellow-700 dark:bg-yellow-500/20 dark:text-yellow-400;
+  }
+
+  .badge-severity-high {
+    @apply badge bg-orange-100 text-orange-700 dark:bg-orange-500/20 dark:text-orange-400;
+  }
+
+  .badge-severity-critical {
+    @apply badge bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400;
+  }
+
+  /* Page Container */
+  .page-container {
+    @apply min-h-screen gradient-bg;
+  }
+
+  .content-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8;
+  }
+
+  /* Section Header */
+  .section-title {
+    @apply text-3xl sm:text-4xl font-bold gradient-text mb-2;
+  }
+
+  .section-subtitle {
+    @apply text-gray-500 dark:text-gray-400 text-lg;
+  }
+
+  /* Stat Card */
+  .stat-card {
+    @apply glass-card p-6 flex flex-col items-center text-center space-y-2;
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation: slideUp 0.5s ease-out both;
+  }
+
+  .animate-in-delay-1 {
+    animation: slideUp 0.5s ease-out 0.1s both;
+  }
+
+  .animate-in-delay-2 {
+    animation: slideUp 0.5s ease-out 0.2s both;
+  }
+
+  .animate-in-delay-3 {
+    animation: slideUp 0.5s ease-out 0.3s both;
+  }
+}
+
+/* Leaflet Map Customizations */
+.leaflet-container {
+  @apply rounded-2xl;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.leaflet-popup-content-wrapper {
+  @apply rounded-xl shadow-xl !important;
+}
+
+.dark .leaflet-tile {
+  filter: brightness(0.7) contrast(1.1) saturate(0.8);
+}
+
+.dark .leaflet-popup-content-wrapper {
+  @apply bg-surface-800 text-gray-100 !important;
+}
+
+.dark .leaflet-popup-tip {
+  @apply bg-surface-800 !important;
+}
+
+/* Custom marker styles */
+.issue-marker {
+  @apply flex items-center justify-center rounded-full shadow-lg border-2 border-white;
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+}
+
+.marker-pothole {
+  @apply bg-red-500;
+}
+
+.marker-bump {
+  @apply bg-amber-500;
+}
+
+.marker-crack {
+  @apply bg-orange-500;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply w-8 h-8 border-4 border-primary-200 border-t-primary-600 rounded-full animate-spin;
+}
+
+/* Route colors */
+.route-safe {
+  stroke: #22c55e;
+}
+
+.route-caution {
+  stroke: #eab308;
+}
+
+.route-danger {
+  stroke: #ef4444;
+}
