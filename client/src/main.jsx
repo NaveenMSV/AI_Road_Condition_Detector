@@ -8,8 +8,12 @@ import { ThemeProvider } from './context/ThemeContext'
 import './index.css'
 import axios from 'axios'
 
-// Set global base URL for API requests (uses env var in production, relative in dev)
-axios.defaults.baseURL = import.meta.env.VITE_API_URL || ''
+// Set global base URL for API requests
+let globalApiUrl = import.meta.env.VITE_API_URL || '';
+if (globalApiUrl.startsWith('http') && !globalApiUrl.endsWith('/api')) {
+  globalApiUrl = globalApiUrl.replace(/\/$/, '') + '/api';
+}
+axios.defaults.baseURL = globalApiUrl;
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

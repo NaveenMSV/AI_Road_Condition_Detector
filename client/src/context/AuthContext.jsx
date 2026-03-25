@@ -9,9 +9,15 @@ import toast from 'react-hot-toast';
 
 const AuthContext = createContext();
 
+// Format baseURL so it always points to /api
+let baseApiUrl = import.meta.env.VITE_API_URL || '/api';
+if (baseApiUrl.startsWith('http') && !baseApiUrl.endsWith('/api')) {
+  baseApiUrl = baseApiUrl.replace(/\/$/, '') + '/api';
+}
+
 // Setup axios defaults
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: baseApiUrl,
   timeout: 15000,
 });
 
